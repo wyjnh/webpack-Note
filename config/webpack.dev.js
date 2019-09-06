@@ -68,11 +68,18 @@ module.exports = {
         new uglify(),
         new htmlPlugin({
             minify:{ //是对html文件进行压缩
-                removeAttributeQuotes:true  //removeAttrubuteQuotes是却掉属性的双引号。
+                removeAttributeQuotes:true, //removeAttrubuteQuotes是却掉属性的双引号。
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
             },
             hash:true, //为了开发中js有缓存效果，所以加入hash，这样可以有效避免缓存JS。
-            template:'./src/index.html' //是要打包的html模版路径和文件名称。
-           
+            template:'./src/index.html', //是要打包的html模版路径和文件名称。
+            inject: "body", // 1 body 将脚本放在body底部 head 放在头部
+            title : "wang"
         }),
         new extractTextPlugin({
             filename:"./css/[name].css",
@@ -81,7 +88,7 @@ module.exports = {
         new PurifyCSSPlugin({ 
             //这里配置了一个paths，主要是需找html模板，purifycss根据这个配置会遍历你的文件，查找哪些css被使用了。
             paths: glob.sync(path.join(__dirname, 'src/*.html')),
-            }),
+        }),
     ],
     // 配置webpack开发服务功能
     devServer:{
