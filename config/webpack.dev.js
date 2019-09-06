@@ -7,6 +7,7 @@ const extractTextPlugin = require('mini-css-extract-plugin')
 const PurifyCSSPlugin = require("purifycss-webpack");
 
 module.exports = {
+    // 模式
     mode : "development",
     // 入口配置
     entry:{
