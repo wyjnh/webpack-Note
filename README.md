@@ -4,6 +4,7 @@
 ## 1.准备工作
 
 mkdir config dist src
+
 touch dist/index.html src/index.js
 
 可以直接在终端中输入命令webpack 将当前的内容进行一个简单的打包
